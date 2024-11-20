@@ -1,57 +1,153 @@
-# Ant Design Pro
+# React IoT Platform
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+A modern IoT (Internet of Things) management platform built with React and Ant Design Pro.
 
-## Environment Prepare
+## Features
 
-Install `node_modules`:
+- Modern UI/UX with Ant Design Pro
+- IoT device management and monitoring
+- Real-time data visualization
+- User authentication and authorization
+- Internationalization support
+- Responsive design for all devices
 
-```bash
-npm install
-```
+## Tech Stack
 
-or
+- React
+- Ant Design Pro
+- TypeScript
+- UmiJS
+- Ant Design Charts
+- Jest for testing
 
-```bash
-yarn
-```
+## Installation
 
-## Provided Scripts
-
-Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
-
-Scripts provided in `package.json`. It's safe to modify or add additional script:
-
-### Start project
-
-```bash
-npm start
-```
-
-### Build project
+Make sure you have Node.js and pnpm installed on your machine.
 
 ```bash
-npm run build
+# Install dependencies
+pnpm install
 ```
 
-### Check code style
+## Development
 
 ```bash
-npm run lint
+# Start development server
+pnpm start:dev
+
+# Start without mock data
+pnpm start:no-mock
+
+# Build for production
+pnpm build
+
+# Run tests
+pnpm test
 ```
 
-You can also use script to auto fix some lint error:
+## Configuration
+
+- Development configuration: `config/config.dev.ts`
+- Production configuration: `config/config.prod.ts`
+- Test configuration: `config/config.test.ts`
+
+## Project Structure
+
+```
+├── config/               # Configuration files
+├── src/                 # Source code
+├── public/              # Static assets
+├── tests/               # Test files
+├── types/               # TypeScript type definitions
+└── package.json         # Project dependencies and scripts
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+# React IoT 
+
+基于 React 和 Ant Design Pro 构建的现代物联网管理平台。
+
+## 
+
+- 基于 Ant Design Pro 的现代化 UI/UX
+- 物联网设备管理和监控
+- 实时数据可视化
+- 用户认证和授权
+- 国际化支持
+- 全设备响应式设计
+
+## 
+
+- React
+- Ant Design Pro
+- TypeScript
+- UmiJS
+- Ant Design Charts
+- Jest 
+
+## 
+
+确保您的机器上已安装 Node.js 和 pnpm。
 
 ```bash
-npm run lint:fix
+# 
+pnpm install
 ```
 
-### Test code
+## 
 
 ```bash
-npm test
+# 
+pnpm start:dev
+
+# 
+pnpm start:no-mock
+
+# 
+pnpm build
+
+# 
+pnpm test
 ```
 
-## More
+## 
 
-You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
+- : `config/config.dev.ts`
+- : `config/config.prod.ts`
+- : `config/config.test.ts`
+
+## 
+
+```
+├── config/               # 
+├── src/                 # 
+├── public/              # 
+├── tests/               # 
+├── types/               # TypeScript 
+└── package.json         # 
+```
+
+## 
+
+1. 
+2. 
+3. 
+4. 
+5. 
+
+## 
+
+.
