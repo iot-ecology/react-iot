@@ -179,7 +179,17 @@ const Admin: React.FC = () => {
         actionRef={actionRef}
         rowKey="key"
         search={{
-          labelWidth: 120,
+          labelWidth: 180,
+          span: {
+            xs: 24,
+            sm: 24,
+            md: 8,
+            lg: 8,
+            xl: 8,
+            xxl: 8
+          },
+          defaultCollapsed: true,
+          layout: 'vertical',
         }}
         toolBarRender={() => [
           <Button

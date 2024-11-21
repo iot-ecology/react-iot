@@ -84,7 +84,7 @@ const Admin: React.FC = () => {
   const actionRef = useRef<ActionType>();
   const [currentRow, setCurrentRow] = useState<API.HttpHandlerListItem>();
   const [setScriptModalOpen, handleSetScriptModalOpen] = useState<boolean>(false);
-  const [createScript, handlerCreateScript] = useState<string>(false);
+  const [createScript, handlerCreateScript] = useState<string>('');
 
   const columns: ProColumns<API.HttpHandlerListItem>[] = [
     {
