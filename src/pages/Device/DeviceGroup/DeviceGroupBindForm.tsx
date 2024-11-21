@@ -72,6 +72,9 @@ const DeviceGroupBindForm: React.FC<UpdateFormProps> = (props) => {
               label: 'sn',
               value: 'ID',
             },
+            filterOption: (input: string, option: any) => {
+              return option?.label?.toString().toLowerCase().indexOf(input.toLowerCase()) !== -1;
+            }
           }}
           key={'device_id'}
           label={<FormattedMessage id="pages.device" />}
