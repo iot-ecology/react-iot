@@ -94,34 +94,46 @@ const Admin: React.FC = () => {
       title: <FormattedMessage id="pages.searchTable.titleOption" defaultMessage="Operating" />,
       dataIndex: 'option',
       valueType: 'option',
-      render: (_, record) => [
-        <Button
-          key="update"
-          onClick={() => {
-            // todo: 修改
-            handleUpdateModalOpen(true);
-            setCurrentRow(record);
-          }}
-        >
-          <FormattedMessage id="pages.update" defaultMessage="修改" />
-        </Button>,
-        <Popconfirm
-          key="delete"
-          title={<FormattedMessage id="pages.deleteConfirm" defaultMessage="确定要删除此项吗？" />}
-          onConfirm={async () => {
-            const success = await handleRemove(record.ID);
-            if (success) {
-              actionRef.current?.reload();
-            }
-          }}
-          okText={<FormattedMessage id="pages.yes" defaultMessage="确定" />}
-          cancelText={<FormattedMessage id="pages.no" defaultMessage="取消" />}
-        >
-          <Button danger>
-            <FormattedMessage id="pages.delete" defaultMessage="删除" />
+      render: (_, record) => {
+        const buttons = [];
+        
+        // 添加修改按钮
+        buttons.push(
+          <Button
+            key="update"
+            onClick={() => {
+              handleUpdateModalOpen(true);
+              setCurrentRow(record);
+            }}
+          >
+            <FormattedMessage id="pages.update" defaultMessage="修改" />
           </Button>
-        </Popconfirm>,
-      ],
+        );
+
+        // 只有当 can_del 不为 false 时才添加删除按钮
+        if (record.can_del !== false) {
+          buttons.push(
+            <Popconfirm
+              key="delete"
+              title={<FormattedMessage id="pages.deleteConfirm" defaultMessage="确定要删除此项吗？" />}
+              onConfirm={async () => {
+                const success = await handleRemove(record.ID);
+                if (success) {
+                  actionRef.current?.reload();
+                }
+              }}
+              okText={<FormattedMessage id="pages.yes" defaultMessage="确定" />}
+              cancelText={<FormattedMessage id="pages.no" defaultMessage="取消" />}
+            >
+              <Button danger>
+                <FormattedMessage id="pages.delete" defaultMessage="删除" />
+              </Button>
+            </Popconfirm>
+          );
+        }
+
+        return buttons;
+      },
     },
   ];
 
