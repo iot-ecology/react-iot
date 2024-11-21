@@ -1,10 +1,13 @@
 import DeviceInfoUpdateForm from '@/pages/Device/DeviceInfo/DeviceInfoUpdateForm';
+import DeviceInfoBindForm from '@/pages/Device/DeviceInfo/DeviceInfoBindForm';
 import {
   addDevice,
   deleteDeviceInfo,
   devicePage,
   productList,
+  queryHandlerId,
   updateDeviceInfo,
+  updateDeviceInfoBind,
 } from '@/services/ant-design-pro/api';
 import { FormattedMessage } from '@@/exports';
 import { PlusOutlined } from '@ant-design/icons';
@@ -80,6 +83,41 @@ async function handleRemove(ID: number | undefined) {
   }
 }
 
+async function handleBind(fields: API.DeviceInfoBindParam) {
+  const hide = message.loading('正在绑定');
+  try {
+    const {protocol, device_info_id} = fields
+    let type = ''
+    if(protocol === 'HTTP') {
+      type = 'HttpHandler'
+    } else if(protocol === 'WebSocket') {
+      type = 'WebsocketHandler'
+    } else if(protocol === 'COAP') {
+      type = 'CoapHandler'
+    } else if(protocol === 'TCP') {
+      type = 'TcpHandler'
+    }
+    if(protocol !== 'MQTT') {
+      let handlerIdResult = await queryHandlerId(type, device_info_id)
+      if(handlerIdResult.code === 20000) {
+        fields.handler_id = handlerIdResult.data.ID
+      }      
+    }
+    let result = await updateDeviceInfoBind(fields);
+    if(result.code === 20000) {
+      message.success('绑定成功');
+    } else {
+      message.error(result.message);
+    }
+    hide();
+    return true;
+  } catch (error) {
+    hide();
+    message.error('绑定失败，请重试！');
+    return false;
+  }
+}
+
 const Admin: React.FC = () => {
   const intl = useIntl();
   /**
@@ -93,6 +131,7 @@ const Admin: React.FC = () => {
    * @zh-CN 分布更新窗口的弹窗
    * */
   const [updateModalOpen, handleUpdateModalOpen] = useState<boolean>(false);
+  const [bindModalOpen, handleBindModalOpen] = useState<boolean>(false);
 
   const [showDetail, setShowDetail] = useState<boolean>(false);
 
@@ -213,14 +252,21 @@ const Admin: React.FC = () => {
         <Button
           key="update"
           onClick={() => {
-            // todo: 修改
             handleUpdateModalOpen(true);
             setCurrentRow(record);
           }}
         >
           <FormattedMessage id="pages.update" defaultMessage="修改" />
         </Button>,
-
+        <Button
+          key="bind"
+          onClick={() => {
+            handleBindModalOpen(true);
+            setCurrentRow(record);
+          }}
+        >
+          <FormattedMessage id="pages.bind" defaultMessage="绑定" />
+        </Button>,
         <Popconfirm
           key="delete"
           title={
@@ -459,6 +505,31 @@ const Admin: React.FC = () => {
           }
         }}
         updateModalOpen={updateModalOpen}
+        values={currentRow || {}}
+      />
+
+      <DeviceInfoBindForm
+        onSubmit={async (value) => {
+          const success = await handleBind({
+            device_info_id: currentRow?.ID,
+            protocol: currentRow?.protocol,
+            ...value
+          });
+          if (success) {
+            handleBindModalOpen(false);
+            setCurrentRow(undefined);
+            if (actionRef.current) {
+              actionRef.current.reload();
+            }
+          }
+        }}
+        onCancel={() => {
+          handleBindModalOpen(false);
+          if (!showDetail) {
+            setCurrentRow(undefined);
+          }
+        }}
+        updateModalOpen={bindModalOpen}
         values={currentRow || {}}
       />
 

@@ -95,7 +95,8 @@ export default {
 
   'pages.device-group': '设备组',
   'pages.device-info.id': '唯一码',
-
+  'pages.device-info.mqtt-client-id': 'MQTT客户端ID',
+  'pages.device-info.device-code': '设备标识码',
   'pages.device-info.product_id': '产品ID',
   'pages.device-info.sn': '设备编号',
   'pages.device-info.manufacturing_date': '制造日期',

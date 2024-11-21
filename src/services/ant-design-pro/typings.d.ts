@@ -430,4 +430,11 @@ declare namespace API {
     description?: string;
     type?: NoticeIconItemType;
   };
+
+  export interface DeviceInfoBindParam {
+    device_info_id?: number | string;
+    protocol?: string;
+    identification_code?: string;
+    handler_id?: number | string;
+  }
 }

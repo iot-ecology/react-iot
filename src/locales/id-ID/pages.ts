@@ -94,7 +94,8 @@ export default {
 
   'pages.device-group': 'Grup Perangkat',
   'pages.device-info.id': 'ID',
-
+  'pages.device-info.mqtt-client-id': 'ID Klien MQTT',
+  'pages.device-info.device-code': 'Kode Perangkat',
   'pages.device-info.product_id': 'ID Produk',
   'pages.device-info.sn': 'Nomor Perangkat',
   'pages.device-info.manufacturing_date': 'Tanggal Pembuatan',

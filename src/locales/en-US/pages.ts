@@ -104,6 +104,8 @@ export default {
   'pages.device-info.push_interval': 'Push Interval (sec)',
   'pages.device-info.error_rate': 'Push Time Error (sec)',
   'pages.device-info.protocol': 'Protocol',
+  'pages.device-info.mqtt-client-id': 'MQTT Client ID',
+  'pages.device-info.device-code': 'Device Code',
 
   'pages.user-list.username': 'Username',
   'pages.user-list.mail': 'Email',

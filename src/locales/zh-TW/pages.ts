@@ -94,7 +94,8 @@ export default {
 
   'pages.device-group': '設備組',
   'pages.device-info.id': '唯一碼',
-
+  'pages.device-info.mqtt-client-id': 'MQTT客戶端ID',
+  'pages.device-info.device-code': '設備標識碼',
   'pages.device-info.product_id': '產品ID',
   'pages.device-info.sn': '設備編號',
   'pages.device-info.manufacturing_date': '製造日期',

@@ -1456,7 +1456,20 @@ export async function deleteRole(id: any) {
   });
 }
 
+/** 设备绑定*/
+export async function updateDeviceInfoBind( dt: any) {
+  return request<API.CommonResp<string>>('/api/DeviceInfo/BindHandlers', {
+    method: 'POST',
+    data: dt
+  });
+}
 
+
+export async function queryHandlerId(type: string, device_info_id: any) {
+  return request<API.CommonResp<string>>('/api'+ type + '/FindByDeviceInfoId/'+ device_info_id, {
+    method: 'GET',
+  });
+}
 
 export async function deleteSimCard(id: any) {
   return request<API.CommonResp<string>>('/api/SimCard/delete/' + id, {
@@ -1828,6 +1841,7 @@ export async function updateDeviceGroup(dt: any) {
     data: dt,
   });
 }
+
 export async function updateDeviceGroupBind(dt: any) {
   return request<API.CommonResp<string>>('/api/device_group/bind_device', {
     method: 'POST',
@@ -1835,26 +1849,34 @@ export async function updateDeviceGroupBind(dt: any) {
   });
 }
 
-export async function queryDeviceGroupBind(dt:any){
-  return request<API.CommonResp<string>>('/api/device_group/query_bind_device?group_id='+dt, {
+export async function queryDeviceGroupBind(dt: any) {
+  return request<API.CommonResp<string>>('/api/device_group/query_bind_device?group_id=' + dt, {
     method: 'get',
   });
-}export async function adminMetrics(){
+}
+
+export async function adminMetrics() {
   return request<string>('/api/metrics', {
     method: 'get',
   });
-}export async function podInfo(){
+}
+
+export async function podInfo() {
   return request<API.CommonResp<string>>('/api/pod_info', {
     method: 'get',
   });
-}export async function deviceStats(){
+}
+
+export async function deviceStats() {
   return request<API.CommonResp<string>>('/api/device-stats', {
     method: 'get',
   });
-}export async function podMetrics(data:any){
+}
+
+export async function podMetrics(data: any) {
   return request<API.CommonResp<string>>('/api/pod_metrics', {
     method: 'post',
-data:data,
+    data: data,
   });
 }
 
@@ -1899,15 +1921,24 @@ export async function scriptWaringHistory(d: any) {
 
 enum MessageType {
   // 计划开始通知
-  StartNotification = 1, // 计划临期通知
-  DueSoonNotification = 2, // 计划到期通知
-  DueNotification = 3, // 生产开始通知
-  ProductionStartNotification = 4, // 生产完成通知
-  ProductionCompleteNotification = 5, // 维修通知
-  MaintenanceNotification = 6, // 维修开始通知
-  MaintenanceStartNotification = 7, // 维修结束通知
-  MaintenanceEndNotification = 8, // SIM卡超时通知
-  SimCardExpireTime = 9, // 设备掉线通知
+  StartNotification = 1,
+  // 计划临期通知
+  DueSoonNotification = 2,
+  // 计划到期通知
+  DueNotification = 3,
+  // 生产开始通知
+  ProductionStartNotification = 4,
+  // 生产完成通知
+  ProductionCompleteNotification = 5,
+  // 维修通知
+  MaintenanceNotification = 6,
+  // 维修开始通知
+  MaintenanceStartNotification = 7,
+  // 维修结束通知
+  MaintenanceEndNotification = 8,
+  // SIM卡超时通知
+  SimCardExpireTime = 9,
+  // 设备掉线通知
   DeviceOffMessage = 10,
 }
 

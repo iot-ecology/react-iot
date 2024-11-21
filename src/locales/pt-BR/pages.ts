@@ -95,6 +95,8 @@ export default {
 
   'pages.device-group': 'Grupo de dispositivos',
   'pages.device-info.id': 'Código único',
+  'pages.device-info.mqtt-client-id': 'ID do Cliente MQTT',
+  'pages.device-info.device-code': 'Código do Dispositivo',
 
   'pages.device-info.product_id': 'ID do produto',
   'pages.device-info.sn': 'Número de série do dispositivo',

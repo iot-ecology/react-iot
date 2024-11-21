@@ -104,6 +104,8 @@ export default {
   'pages.device-info.push_interval': 'プッシュ間隔（秒）',
   'pages.device-info.error_rate': 'プッシュ時間誤差（秒）',
   'pages.device-info.protocol': 'プロトコル',
+  'pages.device-info.mqtt-client-id': 'MQTTクライアントID',
+  'pages.device-info.device-code': 'デバイスコード',
 
   'pages.user-list.username': 'ユーザー名',
   'pages.user-list.mail': 'メール',
@@ -257,4 +259,3 @@ export default {
     "            このプラットフォームはMQTT、HTTP、WebSocket、COAP、TCPプロトコルの伝送をサポートし、軽量の設定ツールを提供してデータのアラーム機能を完了させ、JavaScriptに基づくデータ統計サービスを提供します。",
   "pages.more": "もっと"
 };
-

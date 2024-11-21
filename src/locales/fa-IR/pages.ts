@@ -104,6 +104,8 @@ export default {
   'pages.device-info.push_interval': 'ระยะเวลาผลัก (วินาที)',
   'pages.device-info.error_rate': 'ความผิดพลาดของเวลาผลัก (วินาที)',
   'pages.device-info.protocol': 'โปรโตคอล',
+  'pages.device-info.mqtt-client-id': 'شناسه کلاینت MQTT',
+  'pages.device-info.device-code': 'کد دستگاه',
 
   'pages.user-list.username': 'ชื่อผู้ใช้',
   'pages.user-list.mail': 'อีเมล์',
