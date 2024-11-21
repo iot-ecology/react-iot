@@ -337,16 +337,20 @@ const Admin: React.FC = () => {
           destroyOnClose: true,
           onCancel: () => {
             setSourceValue(0);
+            form.resetFields(); // 在取消时重置表单
           },
         }}
         onFinish={async (value) => {
           const success = await handleAdd(value as API.DeviceInfoItem);
           if (success) {
+            form.resetFields(); // 在提交成功后重置表单
+            setSourceValue(0); // 重置 source 状态
             handleModalOpen(false);
             if (actionRef.current) {
               actionRef.current.reload();
             }
           }
+          return success;
         }}
       >
         <ProFormSelect
