@@ -280,31 +280,17 @@ const Admin: React.FC = () => {
         }}
         onCancel={() => {
           handleUpdateModalOpen(false);
-          if (!showDetail) {
-            setCurrentRow(undefined);
-          }
+          setCurrentRow(undefined);
         }}
-        open={updateModalOpen}
+        updateModalOpen={updateModalOpen}
         values={currentRow || {}}
       />
 
       <UserBindForm
-        onSubmit={async (value) => {
-          // 这里需要调用后端API进行角色或部门的绑定
-          const success = true; // 替换为实际的API调用
-          if (success) {
-            handleBindModalOpen(false);
-            setCurrentRow(undefined);
-            if (actionRef.current) {
-              actionRef.current.reload();
-            }
-          }
-        }}
+        onSubmit={handleBindModalSubmit}
         onCancel={() => {
-          handleBindModalOpen(false);
-          if (!showDetail) {
-            setCurrentRow(undefined);
-          }
+          setBindModalOpen(false);
+          setCurrentRow(undefined);
         }}
         open={bindModalOpen}
         type={bindType}

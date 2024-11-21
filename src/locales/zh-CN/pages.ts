@@ -278,5 +278,6 @@ export default {
   "pages.user.bind.role.placeholder": "请选择角色",
   "pages.user.bind.dept.placeholder": "请选择部门",
 
-  "pages.device":"物理设备"
+  "pages.device":"物理设备",
+  "pages.user.update.title": "修改用户",
 };
