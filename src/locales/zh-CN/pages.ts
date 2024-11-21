@@ -259,9 +259,24 @@ export default {
     "            该平台支持MQTT、HTTP、WebSocket、COAP、TCP协议传输，提供轻量化的配置工具完成数据的报警功能，提供基于JavaScript的数据统计服务。",
 
   "pages.more": '更多',
-
+  "pages.user.bind.role": "绑定角色",
+  "pages.user.bind.dept": "绑定部门",
+  "pages.user.bind.role.get.failed": "获取角色列表失败",
+  "pages.user.bind.dept.get.failed": "获取部门列表失败",
+  "pages.user.bind.info.get.failed": "获取已绑定信息失败",
+  "pages.user.bind.role.success": "角色绑定成功",
+  "pages.user.bind.dept.success": "部门绑定成功",
+  "pages.user.bind.role.failed": "角色绑定失败",
+  "pages.user.bind.dept.failed": "部门绑定失败",
+  "pages.user.bind.submit.failed": "提交失败，请重试！",
+  "pages.user.bind.role.title": "绑定角色",
+  "pages.user.bind.dept.title": "绑定部门",
+  "pages.user.bind.role.label": "角色",
+  "pages.user.bind.dept.label": "部门",
+  "pages.user.bind.role.required": "请选择角色！",
+  "pages.user.bind.dept.required": "请选择部门！",
+  "pages.user.bind.role.placeholder": "请选择角色",
+  "pages.user.bind.dept.placeholder": "请选择部门",
 
   "pages.device":"物理设备"
-
-  
 };

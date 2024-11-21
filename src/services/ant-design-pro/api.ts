@@ -1983,3 +1983,35 @@ export function getMessageTypeDescription(type?: number): string {
     return '未知类型';
   }
 }
+
+/** 用户绑定角色 POST /api/User/BindRole */
+export async function bindUserRole(data: API.UserBindRoleParams) {
+  return request<API.CommonResp<any>>('/api/User/BindRole', {
+    method: 'POST',
+    data,
+  });
+}
+
+/** 用户绑定部门 POST /api/User/BindDept */
+export async function bindUserDept(data: API.UserBindDeptParams) {
+  return request<API.CommonResp<any>>('/api/User/BindDept', {
+    method: 'POST',
+    data,
+  });
+}
+
+/** 查询用户绑定的角色 GET /api/User/QueryBindRole */
+export async function queryUserBindRole(user_id: number) {
+  return request<API.CommonResp<API.UserRoleBinding[]>>('/api/User/QueryBindRole', {
+    method: 'GET',
+    params: { user_id },
+  });
+}
+
+/** 查询用户绑定的部门 GET /api/User/QueryBindDept */
+export async function queryUserBindDept(user_id: number) {
+  return request<API.CommonResp<API.UserDeptBinding[]>>('/api/User/QueryBindDept', {
+    method: 'GET',
+    params: { user_id },
+  });
+}

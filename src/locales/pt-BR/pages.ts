@@ -248,7 +248,6 @@ export default {
   'pages.CassandraTransmitBind.org': 'Org',
   'pages.CassandraTransmitBind.measurement': 'Medição',
 
-
   "pages.welcome.more": "Saiba Mais",
   "pages.welcome.a1": "Bem-vindo à plataforma de desenvolvimento Go IoT",
   "pages.welcome.a3": "Site Oficial",
@@ -259,5 +258,23 @@ export default {
   "pages.welcome.a6": "A plataforma de desenvolvimento Go IoT é uma plataforma de desenvolvimento de IoT de código aberto, esperamos que você possa se juntar a nós para perfeccionar este projeto.",
   "pages.welcome.a2": "A plataforma de desenvolvimento Go IoT é uma solução de IoT gratuita, eficiente e escalável desenvolvida usando a linguagem Go.\n" +
     "             Esta plataforma suporta a transmissão de protocolos MQTT, HTTP, WebSocket, COAP, TCP, fornecendo ferramentas de configuração leve para concluir a função de alarme de dados, fornecendo serviços de estatísticas de dados baseados em JavaScript.",
-    "pages.more": "Mais"
+    "pages.more": "Mais",
+  "pages.user.bind.role": "Vincular Função",
+  "pages.user.bind.dept": "Vincular Departamento",
+  "pages.user.bind.role.get.failed": "Falha ao obter lista de funções",
+  "pages.user.bind.dept.get.failed": "Falha ao obter lista de departamentos",
+  "pages.user.bind.info.get.failed": "Falha ao obter informações de vinculação",
+  "pages.user.bind.role.success": "Vinculação de função bem-sucedida",
+  "pages.user.bind.dept.success": "Vinculação de departamento bem-sucedida",
+  "pages.user.bind.role.failed": "Falha na vinculação de função",
+  "pages.user.bind.dept.failed": "Falha na vinculação de departamento",
+  "pages.user.bind.submit.failed": "Falha no envio, tente novamente!",
+  "pages.user.bind.role.title": "Vincular Função",
+  "pages.user.bind.dept.title": "Vincular Departamento",
+  "pages.user.bind.role.label": "Função",
+  "pages.user.bind.dept.label": "Departamento",
+  "pages.user.bind.role.required": "Por favor, selecione uma função!",
+  "pages.user.bind.dept.required": "Por favor, selecione um departamento!",
+  "pages.user.bind.role.placeholder": "Por favor, selecione uma função",
+  "pages.user.bind.dept.placeholder": "Por favor, selecione um departamento",
 };

@@ -258,5 +258,23 @@ export default {
   "pages.welcome.a2": "Go IoT Development Platform is a free, efficient, and scalable IoT solution developed using the Go language.\n" +
     "            The platform supports MQTT, HTTP, WebSocket, COAP, TCP protocol transmissions, provides lightweight configuration tools for data alarm functions, and offers data statistical services based on JavaScript.",
 
-    "pages.more": 'More'
+    "pages.more": 'More',
+    "pages.user.bind.role": "Bind Role",
+    "pages.user.bind.dept": "Bind Department",
+    "pages.user.bind.role.get.failed": "Failed to get role list",
+    "pages.user.bind.dept.get.failed": "Failed to get department list",
+    "pages.user.bind.info.get.failed": "Failed to get binding information",
+    "pages.user.bind.role.success": "Role binding successful",
+    "pages.user.bind.dept.success": "Department binding successful",
+    "pages.user.bind.role.failed": "Role binding failed",
+    "pages.user.bind.dept.failed": "Department binding failed",
+    "pages.user.bind.submit.failed": "Submission failed, please try again!",
+    "pages.user.bind.role.title": "Bind Role",
+    "pages.user.bind.dept.title": "Bind Department",
+    "pages.user.bind.role.label": "Role",
+    "pages.user.bind.dept.label": "Department",
+    "pages.user.bind.role.required": "Please select role!",
+    "pages.user.bind.dept.required": "Please select department!",
+    "pages.user.bind.role.placeholder": "Please select role",
+    "pages.user.bind.dept.placeholder": "Please select department",
 };

@@ -431,6 +431,50 @@ declare namespace API {
     type?: NoticeIconItemType;
   };
 
+  type UserBindRoleParams = {
+    user_id: number;
+    role_ids: number[];
+  };
+
+  type UserBindDeptParams = {
+    user_id: number;
+    dept_ids: number[];
+  };
+
+  type UserBindRoleResult = {
+    role_ids: number[];
+    roles: {
+      ID: number;
+      name: string;
+    }[];
+  };
+
+  type UserBindDeptResult = {
+    dept_ids: number[];
+    depts: {
+      ID: number;
+      name: string;
+    }[];
+  };
+
+  type UserRoleBinding = {
+    ID: number;
+    CreatedAt: string;
+    UpdatedAt: string;
+    DeletedAt: string | null;
+    user_id: number;
+    role_id: number;
+  };
+
+  type UserDeptBinding = {
+    ID: number;
+    CreatedAt: string;
+    UpdatedAt: string;
+    DeletedAt: string | null;
+    user_id: number;
+    dept_id: number;
+  };
+
   export interface DeviceInfoBindParam {
     device_info_id?: number | string;
     protocol?: string;

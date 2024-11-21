@@ -1,4 +1,5 @@
 import UserUpdateForm from '@/pages/User/UserList/UserUpdateForm';
+import UserBindForm from '@/pages/User/UserList/UserBindForm';
 import { addUser, deleteUser, updateUser, userPage } from '@/services/ant-design-pro/api';
 import { FormattedMessage } from '@@/exports';
 import { PlusOutlined } from '@ant-design/icons';
@@ -69,6 +70,8 @@ const Admin: React.FC = () => {
    * @zh-CN 分布更新窗口的弹窗
    * */
   const [updateModalOpen, handleUpdateModalOpen] = useState<boolean>(false);
+  const [bindModalOpen, setBindModalOpen] = useState<boolean>(false);
+  const [bindType, setBindType] = useState<'role' | 'dept'>('role');
 
   const [showDetail, setShowDetail] = useState<boolean>(false);
 
@@ -126,14 +129,32 @@ const Admin: React.FC = () => {
         <Button
           key="update"
           onClick={() => {
-            // todo: 修改
             handleUpdateModalOpen(true);
             setCurrentRow(record);
           }}
         >
           <FormattedMessage id="pages.update" defaultMessage="修改" />
         </Button>,
-
+        <Button
+          key="bindRole"
+          onClick={() => {
+            handleBindModalOpen(true);
+            setBindType('role');
+            setCurrentRow(record);
+          }}
+        >
+          {intl.formatMessage({ id: 'pages.user.bind.role' })}
+        </Button>,
+        <Button
+          key="bindDept"
+          onClick={() => {
+            handleBindModalOpen(true);
+            setBindType('dept');
+            setCurrentRow(record);
+          }}
+        >
+          {intl.formatMessage({ id: 'pages.user.bind.dept' })}
+        </Button>,
         <Popconfirm
           key="delete"
           title={<FormattedMessage id="pages.deleteConfirm" defaultMessage="确定要删除此项吗？" />}
@@ -153,6 +174,15 @@ const Admin: React.FC = () => {
       ],
     },
   ];
+
+  const handleBindModalOpen = (open: boolean) => {
+    setBindModalOpen(open);
+  };
+
+  const handleBindModalSubmit = async () => {
+    setBindModalOpen(false);
+    actionRef.current?.reload();
+  };
 
   return (
     <PageContainer>
@@ -238,26 +268,47 @@ const Admin: React.FC = () => {
       </ModalForm>
 
       <UserUpdateForm
-        key={'update'}
-        updateModalOpen={updateModalOpen}
-        values={currentRow || {}}
-        onCancel={() => {
-          handleUpdateModalOpen(false);
-          if (!showDetail) {
-            setCurrentRow(undefined);
-            setShowDetail(false);
-          }
-        }}
         onSubmit={async (value) => {
-          console.log(value);
           const success = await handlerUpdate(value);
           if (success) {
             handleUpdateModalOpen(false);
+            setCurrentRow(undefined);
             if (actionRef.current) {
               actionRef.current.reload();
             }
           }
         }}
+        onCancel={() => {
+          handleUpdateModalOpen(false);
+          if (!showDetail) {
+            setCurrentRow(undefined);
+          }
+        }}
+        open={updateModalOpen}
+        values={currentRow || {}}
+      />
+
+      <UserBindForm
+        onSubmit={async (value) => {
+          // 这里需要调用后端API进行角色或部门的绑定
+          const success = true; // 替换为实际的API调用
+          if (success) {
+            handleBindModalOpen(false);
+            setCurrentRow(undefined);
+            if (actionRef.current) {
+              actionRef.current.reload();
+            }
+          }
+        }}
+        onCancel={() => {
+          handleBindModalOpen(false);
+          if (!showDetail) {
+            setCurrentRow(undefined);
+          }
+        }}
+        open={bindModalOpen}
+        type={bindType}
+        values={currentRow || {}}
       />
 
       <Drawer
