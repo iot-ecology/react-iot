@@ -22,7 +22,7 @@ import {
   ProTable,
 } from '@ant-design/pro-components';
 import { useIntl } from '@umijs/max';
-import { Button, Drawer, Form, Image, message, Popconfirm } from 'antd';
+import { Button, Drawer, Form, Image, message, Modal, Popconfirm } from 'antd';
 import React, { useRef, useState } from 'react';
 
 const handleAdd = async (fields: API.ProductItem) => {
@@ -91,6 +91,9 @@ const Admin: React.FC = () => {
   const [updateModalOpen, handleUpdateModalOpen] = useState<boolean>(false);
 
   const [showDetail, setShowDetail] = useState<boolean>(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
 
   const actionRef = useRef<ActionType>();
   const [currentRow, setCurrentRow] = useState<API.ProductItem>();
@@ -189,7 +192,7 @@ const Admin: React.FC = () => {
       hideInSearch: false,
       dataIndex: 'image_url',
       render: (e, r) => {
-        return <Image src={'http://localhost:8080' + '/file/download?path=' + r.image_url}></Image>;
+        return <Image src={'/api/file/download?path=' + r.image_url}></Image>;
       },
     },
 
@@ -402,10 +405,38 @@ const Admin: React.FC = () => {
           name="image_url"
           label={<FormattedMessage id="pages.product.image_url" />}
           fieldProps={{
-            accept: '.jpg,.png', // 设置接受的文件类型
+            accept: '.jpg,.png',
             name: 'file',
             action: '/api/file/update',
             multiple: false,
+            listType: "picture",
+            maxCount: 1,
+            onPreview: async (file) => {
+              console.log('Preview file:', file);
+              const src = file.response?.file_path 
+                ? `/api/file/download?path=${file.response.file_path}`
+                : file.url;
+              
+              if (!src) {
+                message.error('无法获取预览图片地址');
+                return;
+              }
+              console.log('Preview URL:', src);
+              setPreviewImage(src);
+              setPreviewTitle(file.name || '预览图片');
+              setPreviewOpen(true);
+            },
+            onChange(info) {
+              const { status, response } = info.file;
+              if (status === 'done') {
+                if (response?.file_path) {
+                  info.file.url = `/api/file/download?path=${response.file_path}`;
+                }
+                message.success(`${info.file.name} 上传成功`);
+              } else if (status === 'error') {
+                message.error(`${info.file.name} 上传失败`);
+              }
+            },
           }}
           rules={[
             {
@@ -438,6 +469,19 @@ const Admin: React.FC = () => {
           }
         }}
       />
+
+      <Modal
+        open={previewOpen}
+        title={previewTitle}
+        footer={null}
+        onCancel={() => setPreviewOpen(false)}
+      >
+        <Image
+          alt={previewTitle}
+          style={{ width: '100%' }}
+          src={previewImage}
+        />
+      </Modal>
 
       <Drawer
         key={'detail'}
