@@ -156,4 +156,7 @@ export default defineConfig({
   },
   esbuildMinifyIIFE: true,
   requestRecord: {},
+  jsMinifierOptions: {
+    target: ['chrome80', 'es2020']
+  }
 });
